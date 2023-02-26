@@ -1,0 +1,15 @@
+.link {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #EC1D25;
+}
+
+.link__arrow {
+    height: 30px;
+    width: 30px;
+    margin-right: 5px;   
+}

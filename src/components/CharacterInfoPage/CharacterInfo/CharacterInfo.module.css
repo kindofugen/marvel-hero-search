@@ -1,0 +1,29 @@
+.wrapper {
+    background-color: #252525;
+    opacity: .5;
+    padding: 10px;
+    color: #fff;
+    max-width: 360px;
+    margin-left: 15px;
+    border-radius: 3px;
+}
+
+.description__header {
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: underline;
+
+}
+
+.description__text {
+    font-size: 18px;
+    max-height: 324px;
+    text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 700px) {
+    .wrapper {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}

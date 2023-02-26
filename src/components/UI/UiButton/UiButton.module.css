@@ -1,0 +1,30 @@
+.button {
+    min-width: 100px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 3px;
+    font-weight: 600;
+    margin: 10px;
+    background: none;
+    outline: none;
+    transition: .4s;
+    cursor: pointer;
+    border: 2px solid #EC1D25;
+    color: #EC1D25;
+}
+
+.button:hover {
+    background-color: #EC1D25;
+    color: #fff;
+}
+
+.button:disabled {
+    color: #fff;
+    border: 2px solid #EC1D25;
+}
+.button:disabled,
+.button:disabled:hover {
+    color: #9c9c9c;
+    border: 2px solid #9c9c9c;
+    background: none;
+}

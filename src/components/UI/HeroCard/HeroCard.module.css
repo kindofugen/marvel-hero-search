@@ -1,0 +1,53 @@
+.card__container {
+    position: relative;
+}
+
+
+
+
+.list__item:hover {
+    background-color: #EC1D25;
+}
+
+.list__item:hover .text__wrapper:before {
+    border-left: 30px solid #EC1D25;
+}
+
+
+.text__wrapper {
+    height: 50px;
+}
+
+.text__wrapper:before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    
+    border-bottom: 30px solid #fff;
+    border-left: 30px solid #252525;
+    transition: .7s;
+    
+}
+
+.list__item {
+    width: 200px;
+    margin: 20px;
+    border-radius: 3px;
+    background-color: #252525;
+    transition: .7s;
+}
+
+.list__item a {
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+}
+
+
+.character__img {
+    width: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 3px 3px 0 0;
+}
