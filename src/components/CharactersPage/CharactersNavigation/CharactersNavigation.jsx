@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { DEFAULT_START_PARAMS, DEFAULT_END_PARAMS, CHARACTERS } from '../../../constants/urlConstructor';
+import { DEFAULT_START_PARAMS, DEFAULT_END_PARAMS, CHARACTERS } from '../../../constants/apiConstants';
 import UiButton from '../../UI/UiButton';
 import s from './CharactersNavigation.module.css';
 

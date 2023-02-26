@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { getApiResource } from '../../../utils/network';
-import { COMICS, IMG_PORTRAIT_UNCANNY } from '../../../constants/urlConstructor';
+import { COMICS, IMG_PORTRAIT_UNCANNY } from '../../../constants/apiConstants';
 import s from './CharacterComics.module.css';
 
 const CharacterComics = ({ characterComics }) => {

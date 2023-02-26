@@ -3,11 +3,9 @@ import s from './UiButton.module.css';
 
 const UiButton = ({ text, onClick, disabled }) => {
   return (
-    <>
-      <button className={s.button} onClick={onClick} disabled={disabled}>
-        {text}
-      </button>
-    </>
+    <button className={s.button} onClick={onClick} disabled={disabled}>
+      {text}
+    </button>
   );
 };
 

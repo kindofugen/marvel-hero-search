@@ -3,7 +3,7 @@ import { getApiResource } from '../../utils/network';
 import CharactersList from '../../components/CharactersPage/CharactersList';
 import ErrorMessage from '../../components/ErrorMessage';
 import CharactersNavigation from '../../components/CharactersPage/CharactersNavigation';
-import { CHARACTERS, OFFSET_PARAMS } from '../../constants/urlConstructor';
+import { CHARACTERS, OFFSET_PARAMS } from '../../constants/apiConstants';
 
 const CharactersPage = () => {
   const [characters, setCharacters] = useState(null);
@@ -15,9 +15,9 @@ const CharactersPage = () => {
     const response = await getApiResource(resource, queryData);
 
     if (response) {
-      const resData = response?.data;
+      const resData = response.data;
       console.log(resData);
-      const charactersList = resData?.results.map(({ id, name, thumbnail }) => {
+      const charactersList = resData.results.map(({ id, name, thumbnail }) => {
         return {
           id,
           name,
@@ -44,16 +44,12 @@ const CharactersPage = () => {
     }
   }, []);
 
-  return (
+  return errorApi ? (
+    <ErrorMessage />
+  ) : (
     <>
-      {errorApi ? (
-        <ErrorMessage />
-      ) : (
-        <>
-          <CharactersNavigation getResource={getResource} nextPage={nextPage} prevPage={prevPage} />
-          {characters && <CharactersList characters={characters} />}
-        </>
-      )}
+      <CharactersNavigation getResource={getResource} nextPage={nextPage} prevPage={prevPage} />
+      {characters && <CharactersList characters={characters} />}
     </>
   );
 };

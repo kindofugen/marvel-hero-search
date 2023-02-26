@@ -6,7 +6,7 @@ import CharacterInfo from '../../components/CharacterInfoPage/CharacterInfo/Char
 import CharacterImage from '../../components/CharacterInfoPage/CharacterImage/CharacterImage';
 import CharacterLinkBack from '../../components/CharacterInfoPage/CharacterLinkBack';
 import UiLoading from '../../components/UI/UiLoading';
-import { CHARACTERS, IMG_PORTRAIT_INCREDIBLE } from '../../constants/urlConstructor';
+import { CHARACTERS, IMG_PORTRAIT_INCREDIBLE } from '../../constants/apiConstants';
 import s from './CharacterInfoPage.module.css';
 
 const CharacterComics = React.lazy(() => import('../../components/CharacterInfoPage/CharacterComics'));
