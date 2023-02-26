@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  height: 100%;
+  width: 300px;
+  margin-left: 25px;
+  border-radius: 3px;
+}
+
+.wrapper {
+  margin-right: 5px;
+  background-color: #252525;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 3px;
+}
+
+.comics__button {
+  width: 70px;
+  background: none;
+  border: none;
+  color: #252525;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.comics__button:hover {
+  color: #ec1d25;
+}
