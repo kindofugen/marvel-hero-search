@@ -1,4 +1,4 @@
-/* .fail__wrapper {
+.fail__wrapper {
     display: flex;
     justify-content: center;
     padding: 45px;
@@ -9,4 +9,4 @@
     font-weight: 600;
     font-size: 18px;
     justify-self: flex-end;
-} */
+}

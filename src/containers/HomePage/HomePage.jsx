@@ -1,17 +1,18 @@
 import { debounce } from 'lodash';
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { getApiResource } from '../../utils/network';
-import { CHARACTERS, SEARCH_PARAMS } from '../../constants/apiConstants';
-import CharactersList from '../../components/CharactersPage/CharactersList';
-import ErrorMessage from '../../components/ErrorMessage';
+import { CHARACTERS, SEARCH, SEARCH_PARAMS } from '../../constants/apiConstants';
+import SearchResultsPage from '../../components/SearchResultsPage';
 import CharactersPage from '../CharactersPage';
 import UiInput from '../../components/UI/UiInput';
-import s from './HomePage.module.css';
 
 const HomePage = () => {
   const [searchValue, setSearchValue] = useState('');
   const [characters, setCharacters] = useState([]);
   const [errorApi, setErrorApi] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const findCharacter = async (param) => {
     const response = await getApiResource(`${CHARACTERS}`, SEARCH_PARAMS + param);
@@ -37,8 +38,12 @@ const HomePage = () => {
   );
 
   const handleInputChange = (value) => {
+    if (!value) {
+      navigate('/');
+    }
     if (value) {
       debouncedFindCharacter(value);
+      navigate(SEARCH + SEARCH_PARAMS + value, { replace: true });
     }
     setSearchValue(value);
   };
@@ -46,8 +51,16 @@ const HomePage = () => {
   const handleInputClear = (value) => {
     if (value) {
       handleInputChange('');
+      navigate('/');
     }
   };
+
+  useEffect(() => {
+    if (location.pathname.startsWith(SEARCH)) {
+      const paramFromHistory = location.pathname.replace(SEARCH + SEARCH_PARAMS, '');
+      handleInputChange(paramFromHistory);
+    }
+  }, []);
 
   return (
     <div>
@@ -57,19 +70,7 @@ const HomePage = () => {
         placeholder='Find hero...'
         handleInputClear={handleInputClear}
       />
-      {errorApi ? (
-        <ErrorMessage />
-      ) : searchValue ? (
-        characters.length ? (
-          <CharactersList characters={characters} />
-        ) : (
-          <div className={s.fail__wrapper}>
-            <span className={s.fail__message}>No results</span>
-          </div>
-        )
-      ) : (
-        <CharactersPage />
-      )}
+      {searchValue ? <SearchResultsPage errorApi={errorApi} characters={characters} /> : <CharactersPage />}
     </div>
   );
 };
