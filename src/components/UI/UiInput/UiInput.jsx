@@ -3,7 +3,7 @@ import cancel from './img/cancel.png';
 import cn from 'classnames';
 import s from './UiInput.module.css';
 
-const UiInput = ({ value, handleInputChange, placeholder }) => {
+const UiInput = ({ value, handleInputChange, placeholder, handleInputClear }) => {
   return (
     <div className={s.container}>
       <div className={s.input__wrapper}>
@@ -18,7 +18,7 @@ const UiInput = ({ value, handleInputChange, placeholder }) => {
           src={cancel}
           alt='cancel'
           className={cn(s.clear, !value && s.clear__disabled)}
-          onClick={() => value && handleInputChange('')}
+          onClick={handleInputClear}
         />
       </div>
     </div>
