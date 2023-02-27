@@ -1,10 +1,11 @@
 import CharactersPage from '../containers/CharactersPage';
 import CharacterInfoPage from '../containers/CharacterInfoPage/CharacterInfoPage';
+import HomePage from '../containers/HomePage';
 
 const routesConfig = [
   {
     path: '/',
-    element: <CharactersPage />,
+    element: <HomePage />,
   },
   {
     path: '/characters/:id',

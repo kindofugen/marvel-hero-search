@@ -1,0 +1,37 @@
+.container {
+    background-color: #252525;
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.input__wrapper {
+    position: relative;
+}
+
+.search__input {
+    min-width: 300px;
+    padding: 10px 15px;
+    border: 3px solid #dfe2df;
+    border-radius: 3px;
+    font-size: 16px;
+    outline: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.clear {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translate(-5%, -50%);
+    width: 15px;
+    height: 15px;
+    opacity: .5;
+    cursor: pointer;
+    transition: .5;
+}
+
+.clear__disabled {
+    opacity: .2;
+}
