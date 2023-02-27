@@ -1,0 +1,12 @@
+.fail__wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 45px;
+}
+
+.fail__message {
+    color: #252525;
+    font-weight: 600;
+    font-size: 18px;
+    justify-self: flex-end;
+}
