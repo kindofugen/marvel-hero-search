@@ -4,6 +4,7 @@ export const DEFAULT_START_PARAMS = '&limit=20&offset=0';
 export const DEFAULT_END_PARAMS = '&limit=20&offset=1560';
 export const OFFSET_PARAMS = '&limit=20&offset=';
 export const SEARCH_PARAMS = '&nameStartsWith=';
+export const SEARCH = 'characterName';
 
 export const CHARACTERS = 'characters';
 export const COMICS = 'comics';
