@@ -1,6 +1,6 @@
 import { debounce } from 'lodash';
 import { useState, useEffect, useCallback } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { getApiResource } from '../../utils/network';
 import { CHARACTERS, SEARCH, SEARCH_PARAMS } from '../../constants/apiConstants';
 import SearchResultsPage from '../../components/SearchResultsPage';
@@ -8,11 +8,10 @@ import CharactersPage from '../CharactersPage';
 import UiInput from '../../components/UI/UiInput';
 
 const HomePage = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchValue, setSearchValue] = useState(searchParams.get('characterName') || '');
   const [characters, setCharacters] = useState([]);
   const [errorApi, setErrorApi] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const findCharacter = async (param) => {
     const response = await getApiResource(`${CHARACTERS}`, SEARCH_PARAMS + param);
@@ -33,17 +32,19 @@ const HomePage = () => {
   };
 
   const debouncedFindCharacter = useCallback(
-    debounce((value) => findCharacter(value), 300),
+    debounce((value) => {
+      findCharacter(value);
+    }, 300),
     [],
   );
 
   const handleInputChange = (value) => {
     if (!value) {
-      navigate('/');
+      setSearchParams(searchParams.delete(SEARCH));
     }
     if (value) {
       debouncedFindCharacter(value);
-      navigate(SEARCH + SEARCH_PARAMS + value, { replace: true });
+      setSearchParams({ charcterName: value });
     }
     setSearchValue(value);
   };
@@ -51,16 +52,15 @@ const HomePage = () => {
   const handleInputClear = (value) => {
     if (value) {
       handleInputChange('');
-      navigate('/');
     }
   };
 
-  useEffect(() => {
-    if (location.pathname.startsWith(SEARCH)) {
-      const paramFromHistory = location.pathname.replace(SEARCH + SEARCH_PARAMS, '');
-      handleInputChange(paramFromHistory);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const historyValue = searchParams.get('characterName');
+  //   if (historyValue) {
+  //     handleInputChange(historyValue);
+  //   }
+  // }, []);
 
   return (
     <div>

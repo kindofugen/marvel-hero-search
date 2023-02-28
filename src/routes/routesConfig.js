@@ -11,10 +11,6 @@ const routesConfig = [
     path: '/characters/:id',
     element: <CharacterInfoPage />,
   },
-  {
-    path: '/search/:id',
-    element: <HomePage />,
-  },
 ];
 
 export default routesConfig;
