@@ -1,12 +1,9 @@
 import PropTypes from 'prop-types';
 import CharactersList from '../CharactersPage/CharactersList';
-import ErrorMessage from '../ErrorMessage';
 import s from './SearchResultsPage.module.css';
 
-const SearchResultsPage = ({ errorApi, characters }) => {
-  return errorApi ? (
-    <ErrorMessage />
-  ) : characters.length ? (
+const SearchResultsPage = ({ characters }) => {
+  return characters.length ? (
     <CharactersList characters={characters} />
   ) : (
     <div className={s.fail__wrapper}>
@@ -16,7 +13,6 @@ const SearchResultsPage = ({ errorApi, characters }) => {
 };
 
 CharactersList.propTypes = {
-  errorApi: PropTypes.bool,
   characters: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,

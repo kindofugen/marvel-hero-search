@@ -6,6 +6,7 @@ import { CHARACTERS, SEARCH, SEARCH_PARAMS } from '../../constants/apiConstants'
 import SearchResultsPage from '../../components/SearchResultsPage';
 import CharactersPage from '../CharactersPage';
 import UiInput from '../../components/UI/UiInput';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -44,7 +45,7 @@ const HomePage = () => {
     }
     if (value) {
       debouncedFindCharacter(value);
-      setSearchParams({ charcterName: value });
+      setSearchParams({ characterName: value });
     }
     setSearchValue(value);
   };
@@ -55,12 +56,12 @@ const HomePage = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const historyValue = searchParams.get('characterName');
-  //   if (historyValue) {
-  //     handleInputChange(historyValue);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const historyValue = searchParams.get('characterName');
+    if (historyValue) {
+      handleInputChange(historyValue);
+    }
+  }, []);
 
   return (
     <div>
@@ -70,7 +71,7 @@ const HomePage = () => {
         placeholder='Find hero...'
         handleInputClear={handleInputClear}
       />
-      {searchValue ? <SearchResultsPage errorApi={errorApi} characters={characters} /> : <CharactersPage />}
+      {errorApi ? <ErrorMessage /> : searchValue ? <SearchResultsPage characters={characters} /> : <CharactersPage />}
     </div>
   );
 };
