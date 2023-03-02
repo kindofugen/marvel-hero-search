@@ -5,6 +5,7 @@ import { getApiResource } from '../../utils/network';
 import { CHARACTERS, SEARCH, SEARCH_PARAMS } from '../../constants/apiConstants';
 import SearchResultsPage from '../../components/SearchResultsPage';
 import CharactersPage from '../CharactersPage';
+import Banner from '../../components/UI/Banner';
 import UiInput from '../../components/UI/UiInput';
 import ErrorMessage from '../../components/ErrorMessage';
 
@@ -65,6 +66,7 @@ const HomePage = () => {
 
   return (
     <div>
+      <Banner />
       <UiInput
         value={searchValue}
         handleInputChange={handleInputChange}
