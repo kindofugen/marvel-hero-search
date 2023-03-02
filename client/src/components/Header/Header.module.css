@@ -1,0 +1,58 @@
+.container {
+    height: 70px;
+    background-color: #252525;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo__wrapper {
+    width: 128px;
+    height: 51px;
+    margin-left: 20px;
+}
+
+.logo__wrapper img {
+    height: 100%;
+}
+
+
+.icon__wrapper {
+    width: 51px;
+    height: 51px;
+}
+
+.icon__wrapper img {
+    height: 100%;
+}
+
+.sign__wrapper {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.sign__wrapper a {
+    text-decoration: none;
+}
+
+.sign__wrapper span {
+    display: flex;
+    margin-right: 10px;
+    font-weight: 600;
+    align-items: center;
+    color: #fff;
+    outline: none;
+    font-weight: 600;
+    transition: .4s;
+}
+
+.sign__wrapper img {
+    margin-left: 5px;
+}
+
+.sign__wrapper span:hover {
+    color: #EC1D25;
+}

@@ -16,3 +16,6 @@ export const IMG_ON_ERROR_INCREDIBLE =
 export const IMG_PORTRAIT_UNCANNY = 'portrait_uncanny.jpg';
 export const IMG_PORTRAIT_LARGE = 'portrait_xlarge.jpg';
 export const IMG_PORTRAIT_INCREDIBLE = 'portrait_incredible.jpg';
+
+export const AUTH_HOST = 'http://localhost:';
+export const AUTH_PORT = '8080';
