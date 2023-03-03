@@ -1,0 +1,51 @@
+.container {
+    position: relative;
+    width: 128px;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.user__name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    margin-right: 10px;
+
+}
+
+.img__wrapper {
+    width: 51px;
+    height: 51px;
+}
+
+.img__wrapper img {
+    height: 100%;
+}
+
+.signout__wrapper {
+    position: absolute;
+    bottom: -70px;
+    left: 0;
+    width: 128px;
+    padding: 10px;
+    z-index: 2;
+}
+
+.signout__wrapper button {
+    background: #fff;
+    border: 3px solid #EC1D25;
+    border-radius: 3px;
+    color: #EC1D25;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    font-weight: 600;
+    transition: .4s;
+}
+
+.signout__wrapper button:hover {
+    background: #EC1D25;
+    color: #fff;
+}
