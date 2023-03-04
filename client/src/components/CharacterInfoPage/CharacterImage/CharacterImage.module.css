@@ -5,4 +5,18 @@
   object-fit: cover;
   object-position: center center;
   border-radius: 3px;
+  
+}
+
+.wrapper {
+  position: relative;
+}
+
+.favorite {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
 }

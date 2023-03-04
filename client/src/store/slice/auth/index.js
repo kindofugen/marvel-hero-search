@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  user: window.localStorage.getItem('name') || {},
-  isAuthorised: !!window.localStorage.getItem('token'),
+  user: {},
+  isAuthorised: false,
 };
 
 export const authSlice = createSlice({
@@ -13,14 +13,13 @@ export const authSlice = createSlice({
       state.user = action.payload;
       state.isAuthorised = true;
     },
-    signout(state, action) {
-      state.user = action.payload;
-      window.localStorage.removeItem('token');
-      window.localStorage.removeItem('name');
+    signout(state) {
+      state.user = {};
       state.isAuthorised = false;
     },
   },
 });
 
 export const { signin, signout } = authSlice.actions;
-export default authSlice.reducer;
+export const authReducer = authSlice.reducer;
+export default authSlice;

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import marvelLogo from './img/marvelLogo.png';
 import signIcon from './img/signIcon.svg';
+import bookmark from './img/bookmark.svg';
 import UserUnit from '../UserUnit/UserUnit';
 import s from './Header.module.css';
 
@@ -17,7 +18,12 @@ const Header = () => {
         </div>
       </Link>
       {isAuthorised ? (
-        <UserUnit />
+        <div className={s.toolbar__wrapper}>
+          <Link to='/favorites'>
+            <img src={bookmark} className={s.bookmark} alt='favorites' />
+          </Link>
+          <UserUnit />
+        </div>
       ) : (
         <div className={s.sign__wrapper}>
           <Link to='/signup'>

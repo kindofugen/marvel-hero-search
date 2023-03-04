@@ -1,6 +1,7 @@
 .page__wrapper {
    display: flex;
    justify-content: center;
+   height: 500px;
 }
 
 .block__wrapper {

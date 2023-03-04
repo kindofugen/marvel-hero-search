@@ -39,8 +39,8 @@ const SignUpPage = () => {
         },
       });
       dispatch(signin(newUser.data));
-      window.localStorage.setItem('token', newUser.data.token['accessToken']);
-      window.localStorage.setItem('name', newUser.data.login);
+      // window.localStorage.setItem('token', newUser.data.token['accessToken']);
+      // window.localStorage.setItem('name', newUser.data.login);
       setSuccessLogin(true);
     } catch (e) {
       setErrorMessage(ERROR_MESSAGE_LOCAL[e.response.data.error.message]);

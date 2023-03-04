@@ -1,0 +1,44 @@
+.link {
+    text-decoration: none;
+    outline: none;
+}
+
+.container {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.container li {
+    list-style-type: none;
+    
+}
+
+.card__wrapper {
+    width: 216px;
+    margin: 20px;
+    position: relative;
+}
+
+.remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.name__wrapper {
+    color: #fff;
+    background-color: #252525;
+    height: 70px;
+    border-radius: 0 0 3px 3px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.empty_page {
+    text-align: center;
+}

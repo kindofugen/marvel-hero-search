@@ -39,8 +39,6 @@ const SignInPage = () => {
         },
       });
       dispatch(signin(user.data));
-      window.localStorage.setItem('token', user.data.token['accessToken']);
-      window.localStorage.setItem('name', user.data.login);
       navigate('/');
     } catch (e) {
       setErrorMessage(ERROR_MESSAGE_LOCAL[e.response.data.error.message]);
