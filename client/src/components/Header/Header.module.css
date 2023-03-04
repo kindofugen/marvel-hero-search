@@ -55,3 +55,15 @@
 .sign__wrapper span:hover {
     color: #EC1D25;
 }
+
+.toolbar__wrapper {
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+    position: relative;
+}
+
+.bookmark {
+    width: 40px;
+    height: 40px;
+}

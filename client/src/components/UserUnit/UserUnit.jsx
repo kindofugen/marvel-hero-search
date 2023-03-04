@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { signout } from '../../store/slice/auth';
@@ -25,10 +25,10 @@ const UserUnit = () => {
   };
 
   useClickOutside(onClickOutside);
-
+  const userName = useSelector((state) => state.auth.user.login);
   return (
     <div className={s.container} onClick={handleClickUnit}>
-      <span className={s.user__name}>{window.localStorage.getItem('name')}</span>
+      <span className={s.user__name}>{userName}</span>
       <div className={s.img__wrapper}>
         <img src={userIcon} alt='user_icon' />
       </div>

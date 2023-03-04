@@ -1,8 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 export const useClickOutside = (callback) => {
-  const ref = useRef();
-
   useEffect(() => {
     const handleClick = (event) => {
       if (event.target.tagName !== 'BUTTON') {
@@ -15,7 +13,5 @@ export const useClickOutside = (callback) => {
     return () => {
       document.removeEventListener('click', handleClick, true);
     };
-  }, [ref]);
-
-  return ref;
+  });
 };

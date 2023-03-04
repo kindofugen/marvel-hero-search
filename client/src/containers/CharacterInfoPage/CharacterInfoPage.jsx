@@ -1,5 +1,6 @@
 import { useParams } from 'react-router';
 import React, { useState, useEffect, Suspense } from 'react';
+import { useFavorite } from '../../hooks/useFavorite';
 import { getApiResource } from '../../utils/network';
 import ErrorMessage from '../../components/ErrorMessage';
 import CharacterInfo from '../../components/CharacterInfoPage/CharacterInfo/CharacterInfo';
@@ -17,8 +18,10 @@ const CharacterInfoPage = () => {
   const [characterName, setCharacterName] = useState(null);
   const [characterImg, setCharacterImg] = useState(null);
   const [characterComics, setCharacterComics] = useState(null);
+  const [characterId, setCharacterId] = useState(null);
 
   const { id } = useParams();
+  const isFavorite = useFavorite(id);
   useEffect(() => {
     (async () => {
       const res = await getApiResource(`${CHARACTERS}/${id}`);
@@ -30,6 +33,7 @@ const CharacterInfoPage = () => {
             : res.data.results[0].description,
         );
         setCharacterName(res.data.results[0].name);
+        setCharacterId(id);
         setCharacterImg(res.data.results[0].thumbnail.path + `/${IMG_PORTRAIT_INCREDIBLE}`);
         res.data.results[0].comics.available && setCharacterComics(res.data.results[0].comics.items);
       } else {
@@ -48,7 +52,7 @@ const CharacterInfoPage = () => {
           <div className={s.block__wrapper}>
             <span className={s.character__name}>{characterName}</span>
             <div className={s.container}>
-              <CharacterImage characterImg={characterImg} characterName={characterName} />
+              <CharacterImage characterImg={characterImg} characterName={characterName} characterId={characterId} />
               {characterInfo && <CharacterInfo characterInfo={characterInfo} />}
               {characterComics && (
                 <Suspense fallback={<UiLoading />}>

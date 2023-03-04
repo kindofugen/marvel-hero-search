@@ -1,10 +1,12 @@
 .container {
-    position: relative;
-    width: 128px;
+    /* position: relative; */
+    width: 200px;
     display: flex;
     align-items: center;
-    margin-right: 20px;
+    justify-content: space-evenly;
+    margin-right: 10px;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .user__name {
@@ -26,8 +28,8 @@
 
 .signout__wrapper {
     position: absolute;
-    bottom: -70px;
-    left: 0;
+    bottom:-50px;
+    right: 0;
     width: 128px;
     padding: 10px;
     z-index: 2;
@@ -43,6 +45,10 @@
     padding: 5px;
     font-weight: 600;
     transition: .4s;
+    /* position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2; */
 }
 
 .signout__wrapper button:hover {
