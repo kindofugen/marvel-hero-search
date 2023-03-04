@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { useFavorite } from '../../../hooks/useFavorite';
 import { setCharacterToFavorite, removeCharacterFromFavorite } from '../../../store/slice/favorite';
 import { IMG_ON_ERROR_INCREDIBLE } from '../../../constants/apiConstants';
 import star from './img/star.svg';
 import starFilled from './img/star-fill.svg';
 import s from './CharacterImage.module.css';
 
-const CharacterImage = ({ characterImg, characterName, characterId, characterFavorite, setCharacterFavorite }) => {
-  console.log(characterId);
+const CharacterImage = ({ characterImg, characterName, characterId }) => {
+  let isFavorite = useFavorite(+characterId);
   const dispatch = useDispatch();
   const characterData = {
     id: parseInt(characterId),
@@ -16,12 +17,10 @@ const CharacterImage = ({ characterImg, characterName, characterId, characterFav
   };
 
   const toggleFavorite = () => {
-    if (characterFavorite) {
+    if (isFavorite) {
       dispatch(removeCharacterFromFavorite(characterData));
-      setCharacterFavorite(false);
     } else {
       dispatch(setCharacterToFavorite(characterData));
-      setCharacterFavorite(true);
     }
   };
 
@@ -36,7 +35,7 @@ const CharacterImage = ({ characterImg, characterName, characterId, characterFav
           e.target.src = IMG_ON_ERROR_INCREDIBLE;
         }}
       />
-      <img src={characterFavorite ? starFilled : star} onClick={toggleFavorite} className={s.favorite} alt='favorite' />
+      <img src={isFavorite ? starFilled : star} onClick={toggleFavorite} className={s.favorite} alt='favorite' />
     </div>
   );
 };
@@ -45,8 +44,6 @@ CharacterImage.propTypes = {
   characterImg: PropTypes.string,
   characterName: PropTypes.string,
   characterId: PropTypes.string,
-  characterFavorite: PropTypes.bool,
-  setCharacterToFavorite: PropTypes.func,
 };
 
 export default CharacterImage;

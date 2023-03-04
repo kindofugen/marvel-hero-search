@@ -19,7 +19,6 @@ const CharacterInfoPage = () => {
   const [characterImg, setCharacterImg] = useState(null);
   const [characterComics, setCharacterComics] = useState(null);
   const [characterId, setCharacterId] = useState(null);
-  const [characterFavorite, setCharacterFavorite] = useState(false);
 
   const { id } = useParams();
   const isFavorite = useFavorite(id);
@@ -34,7 +33,6 @@ const CharacterInfoPage = () => {
             : res.data.results[0].description,
         );
         setCharacterName(res.data.results[0].name);
-        setCharacterFavorite(isFavorite);
         setCharacterId(id);
         setCharacterImg(res.data.results[0].thumbnail.path + `/${IMG_PORTRAIT_INCREDIBLE}`);
         res.data.results[0].comics.available && setCharacterComics(res.data.results[0].comics.items);
@@ -54,13 +52,7 @@ const CharacterInfoPage = () => {
           <div className={s.block__wrapper}>
             <span className={s.character__name}>{characterName}</span>
             <div className={s.container}>
-              <CharacterImage
-                characterImg={characterImg}
-                characterName={characterName}
-                characterId={characterId}
-                characterFavorite={characterFavorite}
-                setCharacterFavorite={setCharacterFavorite}
-              />
+              <CharacterImage characterImg={characterImg} characterName={characterName} characterId={characterId} />
               {characterInfo && <CharacterInfo characterInfo={characterInfo} />}
               {characterComics && (
                 <Suspense fallback={<UiLoading />}>

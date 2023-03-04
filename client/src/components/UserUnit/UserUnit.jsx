@@ -25,10 +25,10 @@ const UserUnit = () => {
   };
 
   useClickOutside(onClickOutside);
-
+  const userName = useSelector((state) => state.auth.user.login);
   return (
     <div className={s.container} onClick={handleClickUnit}>
-      <span className={s.user__name}>{useSelector((state) => state.auth.user.login)}</span>
+      <span className={s.user__name}>{userName}</span>
       <div className={s.img__wrapper}>
         <img src={userIcon} alt='user_icon' />
       </div>
