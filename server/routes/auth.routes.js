@@ -55,7 +55,7 @@ router.post('/signup', async(req, res) => {
 
             })
             const token = TokenService.generate(newUser.id);
-            res.status(201).send(token);         
+            res.status(201).send({token, login});         
         }
         
 
@@ -108,7 +108,14 @@ router.post('/signin', async(req, res) => {
         
         if (isUserDataCorrect) {
             const token = TokenService.generate(db.users[userIndex].id);
-            res.status(200).send(token);
+            res.status(200).send({token, login});
+        } else {
+            return res.status(400).json({
+                error: {
+                    message: 'INVALID_PASSWORD',
+                    code: 400 
+                }
+            })
         }
 
     } catch (error) {

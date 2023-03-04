@@ -70,3 +70,7 @@
     color: #EC1D25;
     text-decoration-line: underline;
 }
+
+.error__message {
+    color: #EC1D25;
+}

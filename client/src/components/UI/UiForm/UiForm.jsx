@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import s from './UiForm.module.css';
 
-const UiForm = ({ handleInputChange, handleSubmit, inputs, linkPath, linkMessage, submitText }) => {
+const UiForm = ({ handleInputChange, handleSubmit, inputs, linkPath, linkMessage, submitText, errorMessage }) => {
   return (
     <div className={s.container}>
       <div className={s.form__wrapper}>
@@ -13,7 +13,6 @@ const UiForm = ({ handleInputChange, handleSubmit, inputs, linkPath, linkMessage
                   <input
                     name={input.name}
                     type={input.type}
-                    label={input.label}
                     required={input.required}
                     placeholder={input.placeholder}
                     className={s.input}
@@ -23,6 +22,7 @@ const UiForm = ({ handleInputChange, handleSubmit, inputs, linkPath, linkMessage
               );
             })}
           </div>
+          <span className={s.error__message}>{errorMessage}</span>
           <Link className={s.form__link} to={linkPath}>
             {linkMessage}
           </Link>
