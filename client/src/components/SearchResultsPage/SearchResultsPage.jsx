@@ -3,7 +3,7 @@ import CharactersList from '../CharactersPage/CharactersList';
 import s from './SearchResultsPage.module.css';
 
 const SearchResultsPage = ({ characters }) => {
-  return characters.length ? (
+  return characters ? (
     <CharactersList characters={characters} />
   ) : (
     <div className={s.fail__wrapper}>
