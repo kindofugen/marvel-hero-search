@@ -3,6 +3,7 @@ import HomePage from '../containers/HomePage';
 import SignUpPage from '../containers/SignUpPage/SignUpPage';
 import SignInPage from '../containers/SignInPage';
 import FavoritesPage from '../containers/FavoritesPage';
+import SearchHistoryPage from '../containers/SearchHistoryPage';
 
 const routesConfig = [
   {
@@ -24,6 +25,10 @@ const routesConfig = [
   {
     path: '/favorites',
     element: <FavoritesPage />,
+  },
+  {
+    path: '/history',
+    element: <SearchHistoryPage />,
   },
 ];
 

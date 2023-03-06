@@ -1,51 +1,51 @@
-import { debounce } from 'lodash';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { getApiResource } from '../../utils/network';
-import { CHARACTERS, SEARCH, SEARCH_PARAMS } from '../../constants/apiConstants';
+import { useDebounce } from '../../hooks/useDebounce';
+import { addToHistory } from '../../store/slice/history';
+import { useDispatch } from 'react-redux';
+import { useAuth } from '../../hooks/useAuth';
 import SearchResultsPage from '../../components/SearchResultsPage';
 import CharactersPage from '../CharactersPage';
 import Banner from '../../components/UI/Banner';
 import UiInput from '../../components/UI/UiInput';
-import ErrorMessage from '../../components/ErrorMessage';
+import { SEARCH } from '../../constants/apiConstants';
+import { useLazySearchCharacterQuery } from '../../store/api/searchApi';
 
 const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchValue, setSearchValue] = useState(searchParams.get('characterName') || '');
-  const [characters, setCharacters] = useState([]);
-  const [errorApi, setErrorApi] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+  const debouncedSearchValue = useDebounce(searchValue);
+  const historyValue = searchParams.get('characterName');
+  const isAuthorised = useAuth();
+  const [fetchCharacters, { data }] = useLazySearchCharacterQuery();
+  const dispatch = useDispatch();
 
-  const findCharacter = async (param) => {
-    const response = await getApiResource(`${CHARACTERS}`, SEARCH_PARAMS + param);
-    if (response) {
-      const result = response.data.results;
-      const charactersList = result.map(({ id, name, thumbnail }) => {
-        return {
-          id,
-          name,
-          thumbnail,
-        };
-      });
-      setCharacters(charactersList);
-      setErrorApi(false);
-    } else {
-      setErrorApi(true);
+  useEffect(() => {
+    if (historyValue) {
+      setSearchValue(historyValue);
     }
-  };
+  }, []);
 
-  const debouncedFindCharacter = useCallback(
-    debounce((value) => {
-      findCharacter(value);
-    }, 300),
-    [],
-  );
+  useEffect(() => {
+    if (debouncedSearchValue.length >= 1) {
+      setSearchValue(debouncedSearchValue);
+      fetchCharacters(debouncedSearchValue);
+
+      if (isAuthorised) {
+        const searchData = {
+          id: Math.random().toString(16).slice(2),
+          value: debouncedSearchValue,
+        };
+        dispatch(addToHistory(searchData));
+      }
+    }
+  }, [debouncedSearchValue]);
 
   const handleInputChange = (value) => {
     if (!value) {
       setSearchParams(searchParams.delete(SEARCH));
     }
     if (value) {
-      debouncedFindCharacter(value);
       setSearchParams({ characterName: value });
     }
     setSearchValue(value);
@@ -57,13 +57,6 @@ const HomePage = () => {
     }
   };
 
-  useEffect(() => {
-    const historyValue = searchParams.get('characterName');
-    if (historyValue) {
-      handleInputChange(historyValue);
-    }
-  }, []);
-
   return (
     <div>
       <Banner />
@@ -73,7 +66,7 @@ const HomePage = () => {
         placeholder='Find hero...'
         handleInputClear={handleInputClear}
       />
-      {errorApi ? <ErrorMessage /> : searchValue ? <SearchResultsPage characters={characters} /> : <CharactersPage />}
+      {searchValue ? <SearchResultsPage characters={data} /> : <CharactersPage />}
     </div>
   );
 };
