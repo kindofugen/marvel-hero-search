@@ -24,16 +24,12 @@ const HomePage = () => {
     if (historyValue) {
       setSearchValue(historyValue);
     }
-  }, []);
-
-  useEffect(() => {
     if (debouncedSearchValue.length >= 1) {
       setSearchValue(debouncedSearchValue);
       fetchCharacters(debouncedSearchValue);
 
       if (isAuthorised) {
         const searchData = {
-          id: Math.random().toString(16).slice(2),
           value: debouncedSearchValue,
         };
         dispatch(addToHistory(searchData));

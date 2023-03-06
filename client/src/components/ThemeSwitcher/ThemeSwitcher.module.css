@@ -1,0 +1,21 @@
+.wrapper {
+    position: relative;
+}
+
+.icon {
+    padding: 0 10px 0 10px;
+}
+
+.buttons__wrapper {
+    position: absolute;
+    z-index: 2;
+}
+
+.buttons__wrapper button {
+    padding: 5px 15px 5px 15px;
+    background: var(--theme-default-card-background);
+    border: 2px solid var(--theme-default-card-text);
+    border-radius: 3px;
+    color: var(--theme-default-card-text);
+    cursor: pointer;
+}

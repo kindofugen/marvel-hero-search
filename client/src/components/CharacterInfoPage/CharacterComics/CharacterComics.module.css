@@ -19,7 +19,7 @@
   width: 70px;
   background: none;
   border: none;
-  color: #252525;
+  color: var(--theme-default-text);
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;

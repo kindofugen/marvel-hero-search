@@ -10,7 +10,7 @@ const SearchHistoryPage = () => {
   console.log(history);
   return (
     <div className={s.container}>
-      <h1>You searched: </h1>
+      <h1 className={s.header}>You searched: </h1>
       {history.length ? (
         <ul className={s.wrapper}>
           <button className={s.button__clear} onClick={() => dispatch(clearHistory())}>
