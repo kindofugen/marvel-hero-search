@@ -21,8 +21,6 @@ const CharacterComics = ({ characterComics }) => {
     console.log(res);
     if (res) {
       setComicsImage(res.data.results[0].images[0].path);
-    } else {
-      //setComicsImage(res.data.results[0].images[0].path);
     }
   };
 
