@@ -1,11 +1,14 @@
 .wrapper {
     background-color: var(--theme-default-card-background);
-    opacity: .5;
     padding: 10px;
     color: var(--theme-default-card-text);
     max-width: 360px;
     margin-left: 15px;
     border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .description__header {
@@ -19,6 +22,38 @@
     font-size: 18px;
     max-height: 324px;
     text-overflow: ellipsis;
+}
+
+
+.telegram__button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    
+    cursor: pointer;
+    background-color: #ec1d25;
+    border-radius: 50px;
+    padding: 3px;
+    text-decoration: none;
+}
+
+.telegram__button:hover{
+    background-color: #f53840;
+}
+
+.telegram__button:active{
+    background-color: #026698;
+}
+
+.telegram__button i{
+    display: inline-block;
+    height: 15px;
+    width: 17px;
+    
+    background: url('https://telegram.org/img/oauth/tg_button_small.png') no-repeat;
+    background-size: contain;
 }
 
 @media screen and (max-width: 700px) {

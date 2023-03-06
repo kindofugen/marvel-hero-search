@@ -1,11 +1,11 @@
 const express = require('express');
 const fs = require('fs');
-const TokenService = require('../models/token');
-const User = require('../models/user');
+const TokenService = require('../../models/token');
+const User = require('../../models/user');
 const router = express.Router({mergeParams: true});
 
 router.post('/signup', async(req, res) => {
-    const db = JSON.parse(fs.readFileSync(require.resolve('../db/users.json'), 'utf-8'));
+    const db = JSON.parse(fs.readFileSync(require.resolve('../../db/users.json'), 'utf-8'));
     try {
         const {login, password} = req.body;
         const existingUser = db.users.some((user) => user.login === login);
@@ -35,7 +35,7 @@ router.post('/signup', async(req, res) => {
             })
         } else {
             const newUser = new User(login, password);
-            fs.readFile(require.resolve('../db/users.json'), (err, data) => {
+            fs.readFile(require.resolve('../../db/users.json'), (err, data) => {
                 if (err) {
                     const status = 401;
                     const message = err.message;
@@ -44,7 +44,7 @@ router.post('/signup', async(req, res) => {
                 }
                 data = JSON.parse(data.toString());
                 data.users.push(newUser);
-                fs.writeFile(require.resolve('../db/users.json'), JSON.stringify(data), (err, res) => {
+                fs.writeFile(require.resolve('../../db/users.json'), JSON.stringify(data), (err, res) => {
                     if (err) {
                         const status = 401;
                         const message = err.message;
@@ -69,7 +69,7 @@ router.post('/signup', async(req, res) => {
 });
 
 router.post('/signin', async(req, res) => {
-    const db = JSON.parse(fs.readFileSync(require.resolve('../db/users.json'), 'utf-8'));
+    const db = JSON.parse(fs.readFileSync(require.resolve('../../db/users.json'), 'utf-8'));
     try {
         const {login, password} = req.body;
         const existingUser = db.users.some((user) => user.login === login);
