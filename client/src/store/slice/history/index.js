@@ -9,7 +9,7 @@ export const historySlice = createSlice({
     addToHistory(state, action) {
       const isInHistory = state.history.some((el) => el.value === action.payload.value);
       if (!isInHistory) {
-        state.history.push(action.payload);
+        state.history.push({ id: Math.random().toString(16).slice(2), ...action.payload });
       }
     },
     removeFromHistory(state, action) {

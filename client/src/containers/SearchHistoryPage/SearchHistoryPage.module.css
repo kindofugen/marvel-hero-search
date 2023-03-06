@@ -69,3 +69,7 @@
     font-size: 18px;
     font-weight: 600;
 }
+
+.header {
+    color: var(--theme-default-text);
+}

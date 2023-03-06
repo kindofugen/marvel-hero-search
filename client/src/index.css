@@ -1,3 +1,28 @@
+:root {
+  --theme-light-text: #252525;
+  --theme-dark-text: #fcfefe;
+  --theme-light-background: #fcfefe;
+  --theme-dark-background: #252525;
+  --theme-dark-header: #252525;
+  --theme-light-card-background:#252525;
+  --theme-light-card-border-left:#252525;
+  --theme-light-card-border-bottom:#fcfefe;
+  --theme-light-card-text:#fcfefe;
+  --theme-dark-card-background:#fcfefe;
+  --theme-dark-card-border-left:#fcfefe;
+  --theme-dark-card-border-bottom:#252525;
+  --theme-dark-card-text:#252525;
+ 
+
+  --theme-default-text: var(--theme-light-text);
+  --theme-default-background: var(--theme-light-background);
+  --theme-default-card-background: var(--theme-light-card-background);
+  --theme-default-card-border-left: var(--theme-light-card-border-left);
+  --theme-default-card-border-bottom: var(--theme-light-card-border-bottom);
+  --theme-default-card-text: var(--theme-light-card-text);
+
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +30,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--theme-default-background);
+  height: 100vh;
 }
 
 code {

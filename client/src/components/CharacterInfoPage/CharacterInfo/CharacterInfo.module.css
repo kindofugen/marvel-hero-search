@@ -1,8 +1,8 @@
 .wrapper {
-    background-color: #252525;
+    background-color: var(--theme-default-card-background);
     opacity: .5;
     padding: 10px;
-    color: #fff;
+    color: var(--theme-default-card-text);
     max-width: 360px;
     margin-left: 15px;
     border-radius: 3px;

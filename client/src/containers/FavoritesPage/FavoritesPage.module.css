@@ -30,8 +30,8 @@
 }
 
 .name__wrapper {
-    color: #fff;
-    background-color: #252525;
+    color: var(--theme-default-card-text);
+    background-color: var(--theme-default-card-background);;
     height: 70px;
     border-radius: 0 0 3px 3px;
     display: flex;
@@ -41,4 +41,5 @@
 
 .empty_page {
     text-align: center;
+    color: var(--theme-default-text);
 }
