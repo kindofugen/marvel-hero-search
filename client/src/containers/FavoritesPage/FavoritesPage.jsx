@@ -9,7 +9,9 @@ const FavoritesPage = () => {
   const { favorite } = useSelector((state) => state.favorite);
 
   return favorite.length < 1 ? (
-    <h2 className={s.empty_page}>You haven't added anything to your favorites yet</h2>
+    <div className={s.container}>
+      <h2 className={s.empty_page}>You haven't added anything to your favorites yet</h2>
+    </div>
   ) : (
     <ul className={s.container}>
       {favorite.map(({ id, name, img }) => {

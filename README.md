@@ -1,46 +1,59 @@
-# Getting Started with Create React App and Redux
+# Marvel Hero Search App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+<img src="./client/src/components/Header/img/marvelLogo.png">
 
-## Available Scripts
+## `Для запуска проекта:`
+---
+В корневую директорию проекта неоходимо добавить файл `.env` с переменными: 
+`REACT_APP_API_KEY_PUBLIC` и `REACT_APP_API_KEY_PRIVATE`
+в них должны храниться ключи, которые можно получить [тут](https://developer.marvel.com/account)
 
-In the project directory, you can run:
+---
+### запуск сервера:
+в директории `server` доступны команды:</br>
 
-### `npm start`
+`npm i` - для установки зависимостей </br>
+`npm start` - для запуска сервера
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+сервер запустится на [http://localhost:8080](http://localhost:8080)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
+### запуск приложения:
 
-### `npm test`
+в директории `client` доступны команды:</br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`npm i` - для установки зависимостей </br>
+`npm start` - для запуска приложения
 
-### `npm run build`
+приложение запустится на [http://localhost:3000](http://localhost:3000)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## `В проекте реализованы требования:`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 1 уровень (необходимый минимум):
 
-### `npm run eject`
+## `React:`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* Пишем функциональные компоненты c хуками в приоритете над классовыми
+* Есть четкое разделение на умные и глупые компоненты 
+* Есть рендеринг списков 
+* Реализована хотя бы одна форма 
+* Есть применение Контекст API 
+* Есть применение предохранителя 
+* Есть хотя бы один кастомный хук 
+* Хотя бы несколько компонентов используют PropTypes 
+* Поиск не должен триггерить много запросов к серверу 
+* Есть применение lazy + Suspense
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## `Redux:`
+* Используем Modern Redux with Redux Toolkit
+* Используем слайсы 
+* Есть хотя бы одна кастомная мидлвара 
+* Используется RTK Query 
+* Используется Transforming Responses
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 2 уровень (необязательный):
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Storybook. Подключен storybook и созданы несколько сторисов
+* Feature Flags. Реализовать фичу “Поделиться в телеграм”, закрытую под фича флагом. 

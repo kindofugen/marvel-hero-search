@@ -5,7 +5,6 @@ import { COMICS, IMG_PORTRAIT_UNCANNY } from '../../../constants/apiConstants';
 import s from './CharacterComics.module.css';
 
 const CharacterComics = ({ characterComics }) => {
-  console.log(characterComics);
   const [comicsName, setComicsName] = useState(characterComics[0].name);
   const [comicsImage, setComicsImage] = useState(null);
   const [count, setCount] = useState(0);
@@ -18,7 +17,6 @@ const CharacterComics = ({ characterComics }) => {
 
   const getResourse = async (resourse, id) => {
     const res = await getApiResource(`${resourse}/${id}`);
-    console.log(res);
     if (res) {
       setComicsImage(res.data.results[0].images[0].path);
     }

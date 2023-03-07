@@ -1,10 +1,9 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signin } from '../../store/slice/auth';
 import { SIGNIN_INPUTS } from '../../constants/signFormConstants';
-import { AUTH_HOST, AUTH_PORT } from '../../constants/apiConstants';
+import { instance } from '../../utils/axios';
 import { ERROR_MESSAGE_LOCAL } from '../../constants/errorMessageLocalisation';
 import UiForm from '../../components/UI/UiForm';
 
@@ -32,12 +31,7 @@ const SignInPage = () => {
       password,
     };
     try {
-      const user = await axios.post(`${AUTH_HOST + AUTH_PORT}/api/auth/signin`, userData, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
-        },
-      });
+      const user = await instance.post('/auth/signin', userData);
       dispatch(signin(user.data));
       navigate('/');
     } catch (e) {

@@ -1,9 +1,8 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signin } from '../../store/slice/auth';
 import { SIGNUP_INPUTS } from '../../constants/signFormConstants';
-import { AUTH_HOST, AUTH_PORT } from '../../constants/apiConstants';
+import { instance } from '../../utils/axios';
 import { ERROR_MESSAGE_LOCAL } from '../../constants/errorMessageLocalisation';
 import UiForm from '../../components/UI/UiForm';
 import SuccessLogin from '../../components/SuccessLogin';
@@ -32,15 +31,8 @@ const SignUpPage = () => {
       password,
     };
     try {
-      const newUser = await axios.post(`${AUTH_HOST + AUTH_PORT}/api/auth/signup`, userData, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
-        },
-      });
+      const newUser = await instance.post('/auth/signup', userData);
       dispatch(signin(newUser.data));
-      // window.localStorage.setItem('token', newUser.data.token['accessToken']);
-      // window.localStorage.setItem('name', newUser.data.login);
       setSuccessLogin(true);
     } catch (e) {
       setErrorMessage(ERROR_MESSAGE_LOCAL[e.response.data.error.message]);

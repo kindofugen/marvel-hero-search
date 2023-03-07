@@ -1,6 +1,7 @@
 const express = require('express');
 const config  = require('config');
-const routes = require('./routes/index.js');
+const authRoutes = require('./routes/index.js');
+const tgRoutes = require('./routes/telegram/telegram.routes');
 const cors = require('cors');
 
 const app = express();
@@ -8,7 +9,8 @@ app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use('/api', routes);
+app.use('/api', authRoutes);
+app.use('/api', tgRoutes);
 
 
 const PORT = config.get('port') ?? 8080;

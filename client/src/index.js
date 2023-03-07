@@ -6,6 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistor } from './store/store';
 import { store } from './store/store';
 import ThemeProvider from './context/ThemeProvider';
+import TelegramProvider from './context/TelegramProvider';
 import App from './App';
 import './index.css';
 
@@ -17,9 +18,11 @@ root.render(
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <BrowserRouter>
-          <ThemeProvider>
-            <App />
-          </ThemeProvider>
+          <TelegramProvider>
+            <ThemeProvider>
+              <App />
+            </ThemeProvider>
+          </TelegramProvider>
         </BrowserRouter>
       </PersistGate>
     </Provider>

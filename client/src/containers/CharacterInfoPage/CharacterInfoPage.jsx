@@ -21,7 +21,6 @@ const CharacterInfoPage = () => {
   const [characterId, setCharacterId] = useState(null);
 
   const { id } = useParams();
-  const isFavorite = useFavorite(id);
   useEffect(() => {
     (async () => {
       const res = await getApiResource(`${CHARACTERS}/${id}`);
