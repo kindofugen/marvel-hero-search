@@ -7,7 +7,7 @@
     padding: 15px;
     width: 400px;
     height: 200px;
-    background: #fff;
+    background: var(--theme-default-background);
     border-radius: 5px;
     box-shadow: 0 0 10px #000;
     position: absolute;
@@ -18,7 +18,7 @@
 }
 
 .message {
-    color: #5BDD6D;
+    color: var(--theme-default-text);
     font-weight: 600;
     font-size: 20px;
     display: flex;

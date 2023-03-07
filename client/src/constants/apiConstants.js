@@ -19,3 +19,4 @@ export const IMG_PORTRAIT_INCREDIBLE = 'portrait_incredible.jpg';
 
 export const AUTH_HOST = 'http://localhost:';
 export const AUTH_PORT = '8080';
+export const APP_HOST = 'http://localhost:3000';

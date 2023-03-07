@@ -4,6 +4,7 @@ import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, 
 import storage from 'redux-persist/es/storage';
 import { favoritesReducer } from './slice/favorite';
 import { historyReducer } from './slice/history';
+import { loggerMiddleware } from './middleware/logger';
 import { searchApi } from './api/searchApi';
 
 const rootReducer = combineReducers({
@@ -28,6 +29,6 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(searchApi.middleware),
+    }).concat(searchApi.middleware, loggerMiddleware),
 });
 export const persistor = persistStore(store);
