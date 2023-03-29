@@ -3,6 +3,7 @@ const config  = require('config');
 const authRoutes = require('./routes/index.js');
 const tgRoutes = require('./routes/telegram/telegram.routes');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 app.use(cors());
