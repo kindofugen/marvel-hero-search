@@ -14,6 +14,11 @@ app.use('/api', tgRoutes);
 
 
 const PORT = config.get('port') ?? 8080;
+app.use('/', express.static(path.join(__dirname, 'client')));
+const indexPath = path.join(__dirname, 'client', 'index.html');
+app.get('*', (req, res) => {
+    res.sendFile(indexPath)
+})
 
 
 async function start() {
