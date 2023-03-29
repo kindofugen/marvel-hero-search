@@ -1,13 +1,9 @@
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
 import { useTelegram } from '../../../context/TelegramProvider';
-import { APP_HOST } from '../../../constants/apiConstants';
 import s from './CharacterInfo.module.css';
 
 const CharacterInfo = ({ characterInfo }) => {
   const telegramShareBtn = useTelegram().telegramShareBtn;
-  const path = useLocation().pathname;
-  const url = APP_HOST + path;
 
   return (
     <div className={s.wrapper}>
@@ -18,7 +14,7 @@ const CharacterInfo = ({ characterInfo }) => {
       {telegramShareBtn && (
         <a
           className={s.telegram__button}
-          href={`https://t.me/share/url?url=${url}&text="Just look at this character!"`}
+          href={`https://t.me/share/url?url=${window.location.href}&text="Just look at this character!"`}
           target='_blank'
         >
           <i></i>
