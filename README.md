@@ -27,6 +27,11 @@
 
 приложение запустится на [http://localhost:3000](http://localhost:3000)
 
+### для запуска приложения в docker:
+
+`docker build ./ marvel-hero-search`
+`docker run -d -p 8081:8081 --name marvel-hero-search`
+
 ---
 
 ## В проекте реализованы требования:

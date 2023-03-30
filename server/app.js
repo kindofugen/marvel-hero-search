@@ -14,7 +14,7 @@ app.use('/api', authRoutes);
 app.use('/api', tgRoutes);
 
 
-const PORT = config.get('port') ?? 8080;
+const PORT = config.get('port');
 app.use('/', express.static(path.join(__dirname, 'client')));
 const indexPath = path.join(__dirname, 'client', 'index.html');
 app.get('*', (req, res) => {
